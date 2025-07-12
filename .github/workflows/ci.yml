@@ -2,6 +2,13 @@ name: CI
 on:
   pull_request:
 jobs:
+  ok:
+    if: failure()
+    needs:
+      - build
+    runs-on: ubuntu-24.04
+    steps:
+      - run: exit 1
   build:
     runs-on: ubuntu-24.04
     steps:
